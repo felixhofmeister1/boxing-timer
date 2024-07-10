@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import './Timer.css';
 
-const ROUND_DURATION = 3 * 60; // 3 minutes in seconds
-const BREAK_DURATION = 1 * 60; // 1 minute in seconds
+const ROUND_DURATION = 3 * 60; 
+const BREAK_DURATION = 1 * 60; 
 const TOTAL_ROUNDS = 12;
 
 const Timer = () => {
@@ -64,7 +65,7 @@ const Timer = () => {
   };
 
   return (
-    <div className="timer">
+    <div className={`timer ${isBreak ? 'break' : 'round'}`}>
       <h1>Round {isBreak ? 'Break' : round}</h1>
       <div className="time">{formatTime(time)}</div>
       <div className="controls">

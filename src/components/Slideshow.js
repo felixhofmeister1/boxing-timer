@@ -1,40 +1,33 @@
-import React from 'react';
-import { Carousel } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import './Slideshow.css';
 
-const Slideshow = ({ children }) => {
+const images = [
+  '/boxing1.jpg',
+  '/boxing2.jpg',
+  '/boxing3.jpg'
+];
+
+const Slideshow = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); 
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <Carousel>
-      <Carousel.Item>
+    <div className="slideshow">
+      {images.map((image, index) => (
         <img
-          className="d-block w-100"
-          src="https://via.placeholder.com/800x400"
-          alt="First slide"
+          key={index}
+          src={process.env.PUBLIC_URL + image}
+          alt={`Slide ${index}`}
+          className={index === currentImageIndex ? 'active' : ''}
         />
-        <Carousel.Caption>
-          {children}
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://via.placeholder.com/800x400"
-          alt="Second slide"
-        />
-        <Carousel.Caption>
-          {children}
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="https://via.placeholder.com/800x400"
-          alt="Third slide"
-        />
-        <Carousel.Caption>
-          {children}
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+      ))}
+    </div>
   );
 };
 

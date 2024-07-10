@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
 import Timer from './components/Timer';
+import Slideshow from './components/Slideshow';
 
 function App() {
   return (
     <div className="App">
-      <div className="container">
-        <h1>Boxing Timer</h1>
+      <Slideshow />
+      <div className="timer-container">
+        <h1 className="app-title">Boxing Timer</h1>
         <Timer />
       </div>
     </div>
