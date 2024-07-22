@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Timer.css';
 
-const ROUND_DURATION = 3 * 60; // 3 minutes
-const BREAK_DURATION = 1 * 60; // 1 minute
+const ROUND_DURATION = 3 * 60; 
+const BREAK_DURATION = 1 * 60; 
 const TOTAL_ROUNDS = 12;
 
 const Timer = () => {
@@ -14,7 +14,7 @@ const Timer = () => {
   const bell = new Audio(process.env.PUBLIC_URL + '/bell.mp3');
 
   const playBell = () => {
-    bell.currentTime = 0; // Rewind to the start
+    bell.currentTime = 0; 
     bell.play().catch(error => console.log(error));
   };
 
