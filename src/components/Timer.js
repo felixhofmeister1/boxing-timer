@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Timer.css';
 
-const ROUND_DURATION = 3 * 60; 
-const BREAK_DURATION = 1 * 60; 
+const ROUND_DURATION = 3 * 60; // 3 minutes
+const BREAK_DURATION = 1 * 60; // 1 minute
 const TOTAL_ROUNDS = 12;
 
 const Timer = () => {
@@ -11,12 +11,20 @@ const Timer = () => {
   const [isBreak, setIsBreak] = useState(false);
   const [round, setRound] = useState(1);
 
+  const bell = new Audio(process.env.PUBLIC_URL + '/bell.mp3');
+
+  const playBell = () => {
+    bell.currentTime = 0; // Rewind to the start
+    bell.play().catch(error => console.log(error));
+  };
+
   useEffect(() => {
     let interval = null;
     if (isActive) {
       interval = setInterval(() => {
         setTime((prevTime) => {
           if (prevTime === 1) {
+            playBell();
             if (!isBreak && round < TOTAL_ROUNDS) {
               setIsBreak(true);
               return BREAK_DURATION;
@@ -38,6 +46,7 @@ const Timer = () => {
 
   const toggle = () => {
     setIsActive(!isActive);
+    if (!isActive) playBell();
   };
 
   const reset = () => {
@@ -48,6 +57,7 @@ const Timer = () => {
   };
 
   const skip = () => {
+    playBell();
     if (!isBreak && round < TOTAL_ROUNDS) {
       setIsBreak(true);
       setTime(BREAK_DURATION);
