@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/boxing-timer/static/css/main.6c6bbfb5.css",
+    "main.js": "/boxing-timer/static/js/main.ebaf1e04.js",
+    "index.html": "/boxing-timer/index.html",
+    "main.6c6bbfb5.css.map": "/boxing-timer/static/css/main.6c6bbfb5.css.map",
+    "main.ebaf1e04.js.map": "/boxing-timer/static/js/main.ebaf1e04.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6c6bbfb5.css",
+    "static/js/main.ebaf1e04.js"
+  ]
+}
